@@ -1,5 +1,5 @@
 import { ICommand } from '../interfaces/ICommand';
-import { Client } from 'discord.js';
+import { ApplicationCommandType, Client } from 'discord.js';
 import { readdir } from 'fs/promises';
 
 class CommandFactory {
@@ -17,11 +17,11 @@ class CommandFactory {
             for (let i = 0; i < cmdFiles.length; i++) {
                 const file = cmdFiles[i];
                 if (file.endsWith('.ts')) {
-                    const cmd = await import(
+                    const cmd: { default: ICommand } = await import(
                         `${__dirname}/../commands/${file}`
                     );
-                    cmd.default.type = 'CHAT_INPUT';
-                    cmd.default.defaultPermission = false;
+                    cmd.default.type = ApplicationCommandType.ChatInput;
+                    cmd.default.dmPermission = false;
                     this.commands.push(cmd.default);
                 }
             }
