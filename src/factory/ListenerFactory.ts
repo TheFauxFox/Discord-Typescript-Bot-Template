@@ -3,10 +3,10 @@ import { readdir } from 'fs/promises';
 
 class ListenerFactory {
     async register(client: Client) {
-        readdir(`${__dirname}/listeners/`).then((files) => {
+        readdir(`${__dirname}/../listeners/`).then((files) => {
             files.forEach((file) => {
                 if (file.endsWith('.ts')) {
-                    import(`${__dirname}/listeners/${file}`).then(
+                    import(`${__dirname}/../listeners/${file}`).then(
                         (listener) => {
                             listener.default(client);
                         }

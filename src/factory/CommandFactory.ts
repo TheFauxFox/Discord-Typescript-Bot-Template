@@ -13,11 +13,13 @@ class CommandFactory {
         client.guilds.cache.forEach(async (guild) => {
             await guild.commands.set([]);
             await client.application?.commands.set([]);
-            const cmdFiles = await readdir(`${__dirname}/commands/`);
+            const cmdFiles = await readdir(`${__dirname}/../commands/`);
             for (let i = 0; i < cmdFiles.length; i++) {
                 const file = cmdFiles[i];
                 if (file.endsWith('.ts')) {
-                    const cmd = await import(`${__dirname}/commands/${file}`);
+                    const cmd = await import(
+                        `${__dirname}/../commands/${file}`
+                    );
                     cmd.default.type = 'CHAT_INPUT';
                     cmd.default.defaultPermission = false;
                     this.commands.push(cmd.default);
