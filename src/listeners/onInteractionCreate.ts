@@ -12,7 +12,7 @@ export default (client: Client): void => {
                 return;
             }
 
-            await interaction.deferReply();
+            await interaction.deferReply({ ephemeral: slashCommand.ephemeral });
 
             slashCommand.run(client, interaction);
         }

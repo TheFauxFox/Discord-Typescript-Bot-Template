@@ -4,6 +4,7 @@ import { ICommand } from '../interfaces/ICommand';
 export default {
     name: 'ping',
     description: 'Pong!',
+    ephemeral: true,
     run: async (client: Client, interaction: CommandInteraction) => {
         const content = `Pong!\nTook: ${
             Date.now() - interaction.createdTimestamp
