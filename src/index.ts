@@ -1,5 +1,6 @@
 import { Client, IntentsBitField, Partials } from 'discord.js';
 import { config } from 'dotenv';
+import { Listeners } from './factory/ListenerFactory';
 
 config();
 
@@ -25,5 +26,7 @@ const client = new Client({
         Partials.User,
     ],
 });
+
+Listeners.register(client);
 
 client.login(process.env.DISCORDTOKEN);
