@@ -11,7 +11,6 @@ export default {
         }ms`;
 
         await interaction.followUp({
-            ephemeral: true,
             content,
         });
     },
