@@ -8,13 +8,13 @@ console.log('Bot is starting...');
 
 const client = new Client({
     intents: [
+        // IntentsBitField.Flags.GuildMembers,
+        // IntentsBitField.Flags.GuildPresences,
         IntentsBitField.Flags.DirectMessages,
         IntentsBitField.Flags.Guilds,
         IntentsBitField.Flags.GuildBans,
-        IntentsBitField.Flags.GuildMembers,
         IntentsBitField.Flags.GuildMessages,
         IntentsBitField.Flags.GuildMessageReactions,
-        IntentsBitField.Flags.GuildPresences,
         IntentsBitField.Flags.GuildVoiceStates,
         IntentsBitField.Flags.GuildWebhooks,
     ],
